@@ -66,38 +66,40 @@ exports.logout = catchAsyncError(async (req, res, next) => {
 
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
+
     if (!user) {
-        return next(new ErrorHandler("User not found", 404))
+        return next(new ErrorHandler("User not found", 404));
     }
 
-    // Get Reset password token
+    // Get ResetPassword Token
     const resetToken = user.getResetPasswordToken();
 
     await user.save({ validateBeforeSave: false });
-    // ${req.protocol}://${req.get("host")/api/v1}
-    const resetPasswordUrl = `${req.protocol}://${req.get("host")/api/v1}/password/reset/${resetToken}`;
 
-    const message = `Your password reset token is - \n\n ${resetPasswordUrl} \n\n If you gave not requested this email then, please ignore it.`;
+    const resetPasswordUrl = `${req.protocol}://${req.get(
+        "host"
+    )}/password/reset/${resetToken}`;
+
+    const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
     try {
-
         await sendEmail({
             email: user.email,
-            subject: `Book Sell Password Recovery`,
+            subject: `Book Store Password Recovery`,
             message,
         });
 
         res.status(200).json({
             success: true,
             message: `Email sent to ${user.email} successfully`,
-        })
+        });
     } catch (error) {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpire = undefined;
 
         await user.save({ validateBeforeSave: false });
 
-        return next(new ErrorHandler(error.message, 500))
+        return next(new ErrorHandler(error.message, 500));
     }
 })
 
@@ -184,9 +186,9 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
             crop: "scale",
         })
 
-        newUserData.avatar={
-            public_id:myCloud.public_id,
-            url:myCloud.secure_url,
+        newUserData.avatar = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
         }
     }
 
