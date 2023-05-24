@@ -15,6 +15,7 @@ import {
     clearErrors,
 } from "../../actions/orderAction";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import moment from 'moment';
 
 const OrderList = ({ history }) => {
     const dispatch = useDispatch();
@@ -51,7 +52,6 @@ const OrderList = ({ history }) => {
 
     const columns = [
         { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
-
         {
             field: "status",
             headerName: "Status",
@@ -75,6 +75,14 @@ const OrderList = ({ history }) => {
             field: "amount",
             headerName: "Amount",
             type: "number",
+            minWidth: 270,
+            flex: 0.5,
+        },
+
+        {
+            field: "purchaseDate",
+            headerName: "Purchase Date & Time",
+            type: "date",
             minWidth: 270,
             flex: 0.5,
         },
@@ -112,9 +120,11 @@ const OrderList = ({ history }) => {
         orders.forEach((item) => {
             rows.push({
                 id: item._id,
+                customername: item._id,
                 itemsQty: item.orderItems.length,
                 amount: item.totalPrice,
                 status: item.orderStatus,
+                purchaseDate: moment(new Date(item.createdAt)).format('DD-MM-YYYY / hh:mm A '),
             });
         });
 
