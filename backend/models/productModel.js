@@ -67,6 +67,11 @@ const productSchema = new mongoose.Schema({
         ref:"User",
         required: true,
     },
+    isActive:{
+        type:Boolean,
+        default:true,
+        required:true,
+    },
     createdAt: {
         type: Date,
         default: Date.now

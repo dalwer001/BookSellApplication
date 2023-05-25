@@ -32,6 +32,7 @@ const UpdateProduct = ({ history, match }) => {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
+    const [isActive, setIsActive] = useState(true);
     const [stock, setStock] = useState(0);
     const [images, setImages] = useState([]);
     const [oldImages, setOldImages] = useState([]);
@@ -60,6 +61,7 @@ const UpdateProduct = ({ history, match }) => {
             setPrice(product.price);
             setCategory(product.category);
             setStock(product.stock);
+            setIsActive(product.isActive);
             setOldImages(product.images);
         }
         if (error) {
@@ -98,7 +100,7 @@ const UpdateProduct = ({ history, match }) => {
         myForm.set("description", description);
         myForm.set("category", category);
         myForm.set("stock", stock);
-
+        myForm.set("isActive", isActive);
         images.forEach((image) => {
             myForm.append("images", image);
         });
@@ -191,11 +193,19 @@ const UpdateProduct = ({ history, match }) => {
                             <StorageIcon />
                             <input
                                 type="number"
+                                value={stock}
                                 placeholder="Stock"
                                 required
                                 onChange={(e) => setStock(e.target.value)}
-                                value={stock}
                             />
+                        </div>
+
+                        <div>
+                            <AccountTreeIcon />
+                            <select value={isActive} onChange={(e) => setIsActive(e.target.value)}>
+                                <option value={true}>Active</option>
+                                <option value={false}>Inactive</option>
+                            </select>
                         </div>
 
                         <div id="createProductFormFile">
