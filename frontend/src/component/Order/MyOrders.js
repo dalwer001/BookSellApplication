@@ -82,7 +82,7 @@ const MyOrders = () => {
                 id: item._id,
                 status: item.orderStatus,
                 amount: `$${item.totalPrice}`,
-                purchaseDate: moment(new Date(item.createdAt)).format('DD-MM-YYYY / hh:mm A '),
+                purchaseDate: moment(new Date(item.createdAt)).format('DD-MM-YYYY & hh:mm A '),
             });
         });
 

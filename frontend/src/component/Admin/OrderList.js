@@ -101,13 +101,13 @@ const OrderList = ({ history }) => {
                             <EditIcon />
                         </Link>
 
-                        <Button
+                        {/* <Button
                             onClick={() =>
                                 deleteOrderHandler(params.getValue(params.id, "id"))
                             }
                         >
                             <DeleteIcon />
-                        </Button>
+                        </Button> */}
                     </Fragment>
                 );
             },
@@ -124,7 +124,7 @@ const OrderList = ({ history }) => {
                 itemsQty: item.orderItems.length,
                 amount: item.totalPrice,
                 status: item.orderStatus,
-                purchaseDate: moment(new Date(item.createdAt)).format('DD-MM-YYYY / hh:mm A '),
+                purchaseDate: moment(new Date(item.createdAt)).format('DD-MM-YYYY & hh:mm A '),
             });
         });
 
