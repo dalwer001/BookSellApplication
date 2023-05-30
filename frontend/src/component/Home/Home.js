@@ -26,7 +26,7 @@ const Home = () => {
             <Loader />
           ) : (
             <>
-              <MetaData title="Book Sell" />
+              <MetaData title="Book Store" />
     
               <div className="banner">
                 <p>WELCOME TO BOOK SELLING PLATFORM</p>

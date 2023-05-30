@@ -53,6 +53,8 @@ const ProductDetails = ({ match }) => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
 
+    const [orderFound, setOrderFound] = useState(false);
+
     const increaseQuantity = () => {
         if (product.stock <= quantity) return;
 
@@ -87,6 +89,12 @@ const ProductDetails = ({ match }) => {
     };
 
     useEffect(() => {
+        dispatch(myOrders());
+        if(orders && orders.length && orders !== undefined && orders !== null){
+            let productFinding = orders && orders.filter(p => p.orderStatus === "Delivered")?.map(product => product.orderItems && product.orderItems)
+            let matchProduct = productFinding !== undefined && productFinding && productFinding.map(p=>p.find(p=>p.product === match.params.id))?true:false;
+            setOrderFound(matchProduct)
+        }
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -104,24 +112,13 @@ const ProductDetails = ({ match }) => {
 
         dispatch(getProductDetails(match.params.id));
     }, [dispatch, match.params.id, error, alert, reviewError, success]);
-
-    useEffect(() => {
-        dispatch(myOrders());
-    }, [dispatch]);
-
-    // let productMatching = orders.length === 0 ? [] : orders && orders.filter(p => p.orderStatus === "Delivered")
-    // let checkSubmitBtn = productMatching === 0 ? [] : productMatching && productMatching.map((p) => p && p.orderItems)
-
-    // console.log(checkSubmitBtn);
-    // checkSubmitBtn !== undefined && checkSubmitBtn !== "" && checkSubmitBtn.length !== 0 && checkSubmitBtn.map(check => check.product === product._id) &&
-
     return (
         <Fragment>
             {loading ? (
                 <Loader />
             ) : (
                 <Fragment>
-                    <MetaData title={`${product.name} -- Book Selling`} />
+                    <MetaData title={`${product.name}`} />
                     <div className="ProductDetails">
                         <div>
                             <Carousel>
@@ -177,7 +174,7 @@ const ProductDetails = ({ match }) => {
                                 Description : <p>{product.description}</p>
                             </div>
 
-                            {user !== null && user !== undefined && orders && orders.length !== 0 && <button onClick={submitReviewToggle} className="submitReview">
+                            {user !== null && user !== undefined && orderFound === true && <button onClick={submitReviewToggle} className="submitReview">
                                 Submit Review
                             </button>}
                         </div>

@@ -9,6 +9,7 @@ import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
 import LaunchIcon from "@material-ui/icons/Launch";
+import moment from 'moment';
 
 const MyOrders = () => {
     const dispatch = useDispatch();
@@ -49,6 +50,14 @@ const MyOrders = () => {
         },
 
         {
+            field: "purchaseDate",
+            headerName: "Purchase Date & Time",
+            type: "date",
+            minWidth: 270,
+            flex: 0.5,
+        },
+
+        {
             field: "actions",
             flex: 0.3,
             headerName: "Actions",
@@ -73,6 +82,7 @@ const MyOrders = () => {
                 id: item._id,
                 status: item.orderStatus,
                 amount: `$${item.totalPrice}`,
+                purchaseDate: moment(new Date(item.createdAt)).format('DD-MM-YYYY & hh:mm A '),
             });
         });
 

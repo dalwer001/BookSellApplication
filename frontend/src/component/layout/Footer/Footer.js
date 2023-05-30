@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
 
         <div className='midFooter'>
-            <h1>Book Sell</h1>
+            <h1>Book Store</h1>
             <p>High Quality is our first priority</p>
             <p>Copyrights 2021 &copy; Me</p>
         </div>
