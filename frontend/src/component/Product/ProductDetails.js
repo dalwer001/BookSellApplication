@@ -29,13 +29,11 @@ const ProductDetails = ({ match }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
 
+    // const { user } = useSelector((state) => state.user);
+    const { orders } = useSelector((state) => state.myOrders);
     const { product, loading, error } = useSelector(
         (state) => state.productDetails
     );
-
-    const { user } = useSelector((state) => state.user);
-    const { orders } = useSelector((state) => state.myOrders);
-
     const { success, error: reviewError } = useSelector(
         (state) => state.newReview
     );
@@ -89,10 +87,10 @@ const ProductDetails = ({ match }) => {
     };
 
     useEffect(() => {
-        dispatch(myOrders());
-        if(orders && orders.length && orders !== undefined && orders !== null){
-            let productFinding = orders && orders.filter(p => p.orderStatus === "Delivered")?.map(product => product.orderItems && product.orderItems)
-            let matchProduct = productFinding !== undefined && productFinding && productFinding.map(p=>p.find(p=>p.product === match.params.id))?true:false;
+
+        if (orders && orders.length !==0 && orders !== undefined && orders !== null) {
+            let productFinding = orders && orders.filter(p => p.orderStatus === "Delivered").map(product => product.orderItems && product.orderItems)
+            let matchProduct = productFinding !== undefined && productFinding.length !== 0 && productFinding && productFinding.map(p =>  p[0]).find(p => p.product === match.params.id) ? true : false;
             setOrderFound(matchProduct)
         }
         if (error) {
@@ -109,8 +107,8 @@ const ProductDetails = ({ match }) => {
             alert.success("Review Submitted Successfully");
             dispatch({ type: NEW_REVIEW_RESET });
         }
-
         dispatch(getProductDetails(match.params.id));
+        dispatch(myOrders());
     }, [dispatch, match.params.id, error, alert, reviewError, success]);
     return (
         <Fragment>
@@ -174,7 +172,7 @@ const ProductDetails = ({ match }) => {
                                 Description : <p>{product.description}</p>
                             </div>
 
-                            {user !== null && user !== undefined && orderFound === true && <button onClick={submitReviewToggle} className="submitReview">
+                            {orderFound === true && <button onClick={submitReviewToggle} className="submitReview">
                                 Submit Review
                             </button>}
                         </div>
