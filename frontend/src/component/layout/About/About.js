@@ -21,7 +21,7 @@ const About = () => {
                             src="https://img.freepik.com/free-photo/man-wearing-t-shirt-gesturing_23-2149393645.jpg"
                             alt="Founder"
                         />
-                        <Typography>Md. Dalwer Hossain</Typography>
+                        <Typography>Shafayet Hosen</Typography>
                         <Button onClick={visitInstagram} color="primary">
                             Visit Instagram
                         </Button>
@@ -30,15 +30,15 @@ const About = () => {
                         </span>
                     </div>
                     <div className="aboutSectionContainer2">
-                        <Typography component="h2">Our Brands</Typography>
+                        <Typography component="h2">MY CONNECTION</Typography>
                         <a
                             href="https://www.youtube.com/"
-                            target="blank"
+                            target="_blank"
                         >
                             <YouTubeIcon className="youtubeSvgIcon" />
                         </a>
 
-                        <a href="https://www.instagram.com/" target="blank">
+                        <a href="https://www.instagram.com/" target="_blank">
                             <InstagramIcon className="instagramSvgIcon" />
                         </a>
                     </div>

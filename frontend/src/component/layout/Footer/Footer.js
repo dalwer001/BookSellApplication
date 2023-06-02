@@ -12,17 +12,16 @@ const Footer = () => {
             <img src={playStore} alt="playStore"/>
             <img src={appStore} alt="playStore"/>
         </div>
-
         <div className='midFooter'>
             <h1>Book Store</h1>
             <p>High Quality is our first priority</p>
-            <p>Copyrights 2021 &copy; Me</p>
+            <p>Copyrights 2021 &copy; Shafayet Hosen</p>
         </div>
         <div className="rightFooter">
             <h4>Follow Us</h4>
-            <a href="https://www.instagram.com/">Instagram</a>
-            <a href="https://www.facebook.com/">Facebook</a>
-            <a href="https://www.youtube.com/">Youtube</a>
+            <a href="https://www.instagram.com/" target='_blank' alt="Instagram">Instagram</a>
+            <a href="https://m.facebook.com/p/Shafayet-Hosen-100010533660050/?wtsid=rdr_0CLRxJhlZeE7HP5qW" target='_blank' alt="Facebook">Facebook</a>
+            <a href="https://www.youtube.com/" target='_blank' alt="Youtube">Youtube</a>
         </div>
     </footer>
   )
