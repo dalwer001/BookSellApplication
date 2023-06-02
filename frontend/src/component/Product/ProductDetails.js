@@ -87,7 +87,6 @@ const ProductDetails = ({ match }) => {
     };
 
     useEffect(() => {
-
         if (orders && orders.length !==0 && orders !== undefined && orders !== null) {
             let productFinding = orders && orders.filter(p => p.orderStatus === "Delivered").map(product => product.orderItems && product.orderItems)
             let matchProduct = productFinding !== undefined && productFinding.length !== 0 && productFinding && productFinding.map(p =>  p[0]).find(p => p.product === match.params.id) ? true : false;

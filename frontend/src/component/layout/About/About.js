@@ -21,7 +21,7 @@ const About = () => {
                             src="https://img.freepik.com/free-photo/man-wearing-t-shirt-gesturing_23-2149393645.jpg"
                             alt="Founder"
                         />
-                        <Typography>Md. Dalwer Hossain</Typography>
+                        <Typography>Shafayet Hosen</Typography>
                         <Button onClick={visitInstagram} color="primary">
                             Visit Instagram
                         </Button>
