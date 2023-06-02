@@ -19,9 +19,9 @@ const Footer = () => {
         </div>
         <div className="rightFooter">
             <h4>Follow Us</h4>
-            <a href="https://www.instagram.com/">Instagram</a>
-            <a href="https://m.facebook.com/p/Shafayet-Hosen-100010533660050/?wtsid=rdr_0CLRxJhlZeE7HP5qW" target='_blank'>Facebook</a>
-            <a href="https://www.youtube.com/">Youtube</a>
+            <a href="https://www.instagram.com/" target='_blank' alt="Instagram">Instagram</a>
+            <a href="https://m.facebook.com/p/Shafayet-Hosen-100010533660050/?wtsid=rdr_0CLRxJhlZeE7HP5qW" target='_blank' alt="Facebook">Facebook</a>
+            <a href="https://www.youtube.com/" target='_blank' alt="Youtube">Youtube</a>
         </div>
     </footer>
   )
