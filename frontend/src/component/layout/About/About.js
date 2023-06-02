@@ -19,7 +19,7 @@ const About = () => {
                         <Avatar
                             style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
                             src="https://img.freepik.com/free-photo/man-wearing-t-shirt-gesturing_23-2149393645.jpg"
-                            alt="Found"
+                            alt="Founder"
                         />
                         <Typography>Shafayet Hosen</Typography>
                         <Button onClick={visitInstagram} color="primary">
