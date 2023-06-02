@@ -12,7 +12,6 @@ const Footer = () => {
             <img src={playStore} alt="playStore"/>
             <img src={appStore} alt="playStore"/>
         </div>
-
         <div className='midFooter'>
             <h1>Book Store</h1>
             <p>High Quality is our first priority</p>
