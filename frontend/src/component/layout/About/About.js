@@ -30,15 +30,15 @@ const About = () => {
                         </span>
                     </div>
                     <div className="aboutSectionContainer2">
-                        <Typography component="h2">Our Brands</Typography>
+                        <Typography component="h2">MY CONNECTION</Typography>
                         <a
                             href="https://www.youtube.com/"
-                            target="blank"
+                            target="_blank"
                         >
                             <YouTubeIcon className="youtubeSvgIcon" />
                         </a>
 
-                        <a href="https://www.instagram.com/" target="blank">
+                        <a href="https://www.instagram.com/" target="_blank">
                             <InstagramIcon className="instagramSvgIcon" />
                         </a>
                     </div>
